@@ -1,0 +1,15 @@
+{
+   "username":"davidillsley",
+   "details":{
+      "email":"david@illsley.org",
+      "freeDaysLeft":30,
+      "hasPaid":false,
+      "lastLoginDates":[
+         "2011-11-01",
+         "2011-11-05",
+         "2011-11-20",
+         "2011-11-29",
+         "2011-12-16"
+      ]
+   }
+}
