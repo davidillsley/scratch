@@ -16,3 +16,11 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
   .close();
 }
 </pre>
+
+The Object Model API uses standard List<> and Map<> interfaces, alongside a holder - JSONValue - so that unsafe casting isn't necessary.
+
+Complex navigation is expected to be done using a simple path language.
+
+Examples of the above, and the other interfaces at https://github.com/davidillsley/scratch/tree/master/json/src/org/i5y/json/examples
+
+(Rough) Javadoc at: http://downloads.illsley.org/temp/json/
