@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BrowserID Standalone Verifier</title>
+</head>
+<body>
+	<h3>BrowserID Standalone Verifier</h3>
+	<button>Verify an Identity</button>
+	<br><br>
+	<div id="results"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://browserid.org/include.js"></script>
+<script>
+	$("button").click(
+			function(event) {
+				event.preventDefault();
+				navigator.id.getVerifiedEmail(function(assertion) {
+					console.log("assertion: " + assertion);
+					if (!assertion) {
+						$("div.main").text("you have to select an idenity");
+					} else {
+						$.ajax({
+							url : "/verifier/verifier",
+							type : "post",
+							dataType : "json",
+							data : {
+								assertion : assertion
+							},
+							success : function(data, textStatus, jqXHR) {
+								if(data.verified){
+									$("#results").text(
+										"Identity verified: " + data.identity);
+								}else{
+									$("#results").text(
+											"Identity verification failed");
+								}
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								console.log(textStatus);
+								$("#results").text(
+										"An error occurred: " + errorThrown);
+							}
+						});
+					}
+				});
+			});
+</script>
+</html>
